@@ -1,0 +1,180 @@
+//Douglass Crawford wrote "Javascript: the Good Parts"
+/Eloquent Javascript
+
+
+<script>
+<--
+DONT DO THIS HTML COMMENT SHIT. no one lives in the 90's
+-->
+</script
+
+var foo = 'bar'
+//calling function imediatly and logging foo
+(function log(messages) {
+    console.log(message);
+} ('foo')
+
+//everything is put in a this one big colsure, including functions
+//stuf doesnt step on eachither
+(function() {
+	console.log(message);
+} ());
+
+//by default the variables are global!
+// adding 'var' infront of a vaiable makes them block specific
+
+
+//this is the start of creating my own javascript librry
+// add the function 'add' to adder object if adder already exists. if it doesnt exist, create it and try again 
+(function(window) {
+	
+	var adder; //This and var adder = adder || {}; are the same things, but this one is longer.
+	if (ns.adder) adder = ns.adder;
+	else adder = {};
+
+	var adder = adder || {}; //if we need something to come out of the window scope use this, otherwise dont use this pattern. This binds adder to the global namespace
+
+	function add() {
+
+	}
+
+	adder.add = add;
+
+	window.adder = adder; //binding adder to window
+
+} (window));
+
+
+//ajax is an example of an asyncronous method
+console.log(adder);
+
+function getData(url, callback) {
+    // data = fetchData();
+    setTimeout(function() {  
+        if (callback) callback('data');
+    }, 1000);
+}
+
+function getDataSync(url) {
+    return 'data';
+}
+
+console.log(getDtaSync('google.com'));
+
+getData('google.com', function(d) {
+
+});
+
+//point of call back is to tag every event and stack the events up and then execute them in the order recieved.
+//problem to deal with in javascript is that the user can be poking around, something can be coming in from the back end, and so your program needs to be able to deal with these cases. We use callbacks to do this.
+
+
+
+//Functions can be used as constrctors.
+//JavaScript is kinda a object oriented language.
+//has prototypical inheritance  - which is:
+
+
+
+
+function Cat () {
+
+    this.name = name;
+
+    console.log(this);
+
+}
+//people hate on javascript for this?
+Cat.prototype.meow = function() {
+    return this.name+" the cat says meow.";
+}
+
+Cat(); //scope is window (global namespace) //global scope is attached to browser window
+//anything not explicitly bound is globally avalible.
+//There can be multiple windows, such as pop-ups
+
+new Cat(); //scope is object
+
+Cat('Meowseph'); //global name space
+
+new Cat('Meowseph').meow(); //object scope, and calling an instance method
+
+///////
+var meowseph = new Cat('Meowseph');
+
+console.log(meowseph.meow());
+
+console.log(new Cat('Socks').meow());
+
+console.log(meowseph.meow());  //not the same meowseph, a new object with the same name
+
+/////
+
+//same thing being done with cat, but Dog is here and is private
+//each time instance of createDog 
+
+// declare private vaiables by putting two underscores in fron of its name '__'
+function createDog (name) {
+
+    var boneHidingSpot = 'backyard';
+
+    //PRIVATE method
+    function getBone(spot) {
+        console.log(spot, boneHidingSpot);
+        if (spot == boneHidingSpot) return "got bone";
+        else return "no bone there";
+    }
+    //public stuff goes in the constructor
+    function Dog(name) { //constructor
+        this.name = name;
+        boneHidingSpot = spot;
+    }
+    //PUBLIC because it's a prototype, which is being used to ACCESS the PRIVATE getBone() from anywhere under a controlled enviornment
+    Dog.prototype.getBoneFrom = function(spot) {
+        return getBone(spot);
+    }
+    return new Dog(name);
+
+}
+
+//this constructs an object now. 'new Dog' is wrapped into createDog, making the Dog object variable private (in the sense that they can only be accessed by referencing the object). 
+//boneHidingSpot is only accesable through a dog object
+
+var dog = createDog('Doug', 'backyard').getBone();
+
+four twenty blaze it
+
+//extends the native protype but we shouldnt do this because it causes bugs
+//Array is built in, and im now extending it, and added functionality to it
+Array.prototype.add = function() {
+    var n = 0;
+    for (var i in this) n += this[i]; //returns every 
+    return n;
+}
+
+new Array(1,2,3).add(); 
+
+MooTools extends native prototype, but they are creating a new class to fix themselves
+http://mootools.net/
+
+_____________
+
+DOM - filled with crap
+
+-its like traversing XML docs
+tells all fo the functions the browsers gives to do anything
+ever element lives somewhere in the DOM
+
+basically a collection of Nodes
+
+
+
+//forget to remove a trailing comma in an object, it will give a STUPID 
+
+
+
+
+
+
+
+
